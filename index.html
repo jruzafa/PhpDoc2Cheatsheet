@@ -127,27 +127,19 @@ $user = $this->User->read();</code></pre>
 <div class="span6">
 
 <h4>Elements</h4>
+<pre>
+<code>
+/**
+* Global variable declaration docBlock
+* @global integer $GLOBALS['_myvar']
+* @name $_myvar
+*/
 
-<p>Display Elemtent</p>
-<pre><code>echo $this->element('helpbox');</code></pre>
+$GLOBALS['_myvar'] = 6;
+</code>
+</pre>
 
-<p>Passing Variables into an Element</p>
-<pre><code>echo $this->element('helpbox', array(
-    "helptext" => "Oh, this text is very helpful."
-));
 
-// inside helpbox.ctp
-echo $helptext;</code></pre>
-
-<p>Caching Elements</p>
-<pre><code>echo $this->element('helpbox', array(), array('cache' => true));</code></pre>
-<h4>Page Titles</h4>
-
-<p>From Controller</p>
-<pre><code>$this->set('title_for_layout', 'View Active Users');</code></pre>
-
-<p>From View:</p>
-<pre><code>$this->set('title_for_layout', $titleContent);</code></pre>
 </div>
 
 
@@ -155,25 +147,11 @@ echo $helptext;</code></pre>
     <h5>Layouts</h5>
     <pre><code>$this->layout = 'admin';</code></pre>
 
-    <h5>Fetch content</h5>
-    <pre><code>echo $this->fetch('content');</code></pre>
 
-    <h5>Retrieving data:</h5>
-<pre><code>$this->requestAction('/articles/featured/limit:3');
-$this->requestAction('/articles/view/5');</code></pre>
-
-<h5>Insert Stylesheet</h5>
-<pre><code>echo $this->Html->css('forms');</code></pre>
-
-<h5>Insert Javascript</h5>
-<pre><code>echo $this->Html->script('scripts');</code></pre>
 </div>
 
 </div>
 </section>
-
-
-
 
 <!--- #############  CLASS ##########   -->
 
@@ -192,109 +170,6 @@ class Ingredient extends AppModel {
     public $name = 'Ingredient';
 }</code></pre>
 
-<h3>Relations</h3>
-<h5>Has One</h5>
-<pre><code>public $hasOne = array(
-    'Profile' => array(
-        'className'    => 'Profile',
-        'conditions'   => array('Profile.published' => '1'),
-        'dependent'    => true
-    )
-);</code></pre>
-
-<h5>BelongsTo Relation</h5>
-<pre><code>public $belongsTo = array(
-    'User' => array(
-        'className'    => 'User',
-        'foreignKey'   => 'user_id'
-    )
-);</code></pre>
-
-<h5>Has Many</h5>
-<pre><code>public $hasMany = array(
-    'Comment' => array(
-        'className'     => 'Comment',
-        'foreignKey'    => 'user_id',
-        'conditions'    => array('Comment.status' => '1'),
-        'order'         => 'Comment.created DESC',
-        'limit'         => '5',
-        'dependent'     => true
-    )
-);</code></pre>
-
-<h5>Mas Many and Belongs to</h5>
-<pre><code>public $hasAndBelongsToMany = array(
-'Ingredient' =>
-    array(
-        'className'              => 'Ingredient',
-        'joinTable'              => 'ingredients_recipes',
-        'foreignKey'             => 'recipe_id',
-        'associationForeignKey'  => 'ingredient_id',
-        'unique'                 => true
-    )
-);</code></pre>
-
-
-<h5>Limit results hasMany</h5>
-<p>Limits the maximum number of results for the child hasMany model</p>
-<pre><code>$this->ModelName->hasMany['ChildModelName']['limit'] = 10;</code></pre>
-
-
-<h3>Validation</h3>
-<p>Single Field validation</p>
-<pre><code>public $validate = array(
-    'fieldName1' => array(
-        'rule'       => 'ruleName',
-        'required'   => true,
-        'allowEmpty' => false,
-        'on'         => 'create',
-        'message'    => 'Your Error Message'
-    )
-);</code></pre>
-
-<p>Multiple rules per field</p>
-<pre><code>public $validate = array(
-    'login' => array(
-        'loginRule-1' => array(
-            'rule'    => 'alphaNumeric',
-            'message' => 'Only alphabets and numbers',
-         ),
-        'loginRule-2' => array(
-            'rule'    => array('minLength', 8),
-            'message' => 'Minimum length of 8 characters'
-        )
-    )
-);</code></pre>
-
-<h4>Validate from controller</h4>
-<p>First, set the data to the model:</p>
-<pre><code>$this->ModelName->set($this->request->data);</code></pre>
-<p>Then, to check if the data validates, use the validates method of the model, which will return true if it validates and false if it doesn’t:</p>
-<pre><code>if ($this->ModelName->validates()) {
-    // it validated logic
-} else {
-    // didn't validate logic
-    $errors = $this->ModelName->validationErrors;
-}</code></pre>
-<p>Retrieve the validation errors in an array:</p>
-<pre><code>$errors = $this->ModelName->invalidFields();</code></pre>
-
-<h3>Schema</h3>
-<pre><code>public $_schema = array(
-    'id' => array(
-        'type' => 'integer',
-        'length' => 12
-    ),
-    'title' => array(
-        'type' => 'string',
-        'length' => 40
-    ),
-    'created' => array(
-        'type' => 'datetime'
-    ),
-    'message' => array('type' => 'text')
-);</code></pre>
-
 
 <h3>Field</h3>
 <p>echo the name for row id 22</p>
@@ -309,112 +184,8 @@ echo $this->Post->field('name');</code></pre>
 <h3>Model Attributes</h3>
 <h5>Database config</h5>
 <pre><code>public $useDbConfig = 'alternate';</code></pre>
-<h5>Table Prefix</h5>
-<pre><code>public $tablePrefix = 'alternate_';</code></pre>
-<h5>Primary Key</h5>
-<pre><code>public $primaryKey = 'example_id';</code></pre>
-<h5>Display field</h5>
-<pre><code>public $displayField = 'fieldname';</code></pre>
 
 
-<h3>Retrieving Data</h3>
-    <h5>Find all</h5>
-    <pre><code>$this->ModelName->find('all');</code></pre>
-
-    <h5>Find by name</h5>
-    <pre><code>$this->ModelName->findByName('name');</code></pre>
-
-    <h5>Find First</h5>
-    <pre><code>$this->ModelName->find('first');</code></pre>
-
-    <h5>Count</h5>
-    <pre><code>$this->ModelName->find('count');</code></pre>
-
-    <h5>Find List</h5>
-    <pre><code>$this->ModelName->find('list');</code></pre>
-
-<h4>findAllBy</h4>
-    <h5>Product.order_status = 3</h5>
-    <pre><code>$this->Product->findAllByOrderStatus('3');</code></pre>
-
-    <h5>Recipe.type = 'Cookie'</h5>
-    <pre><code>$this->Recipe->findAllByType('Cookie');</code></pre>
-
-    <h5>User.last_name = 'Anderson'</h5>
-    <pre><code>$this->User->findAllByLastName('Anderson');</code></pre>
-
-    <h5>Cake.id = 7</h5>
-    <pre><code>$this->Cake->findAllById(7);</code></pre>
-
-    <h5>User.email = 'jhon' OR User.username = 'jhon';</h5>
-    <pre><code>$this->User->findAllByEmailOrUsername('jhon', 'jhon');</code></pre>
-
-<h4>findBy</h4>
-    <h5>Product.order_status = 3</h5>
-    <pre><code>$this->Product->findByOrderStatus('3');</code></pre>
-
-    <h5>Recipe.type = 'Cookie'</h5>
-    <pre><code>$this->Recipe->findByType('Cookie');</code></pre>
-
-    <h5>Cake.id = 7</h5>
-    <pre><code>$this->Cake->findById(7);</code></pre>
-
-
-    <h5>Conditions</h5>
-    <pre><code>$conditions = array(
-    'conditions' => array('Model.field' => $thisValue),
-    'recursive' => 1, //int
-    'fields' => array('Model.field', 'DISTINCT Model.field'),
-    'order' => array('Model.created', 'Model.field3 DESC'),
-    'group' => array('Model.field'),
-    'limit' => n, //int
-    'page' => n, //int
-    'offset' => n, //int
-    'callbacks' => true
-);</code></pre>
-    <p>Example for this:</p>
-    <pre><code>$this->ModelName->find('all', $conditions);</code></pre>
-
-    <h5>Compact</h5>
-    <pre><code>$this->set(compact('categories'));</code></pre>
-
-    <h5>Query</h5>
-    <pre><code>$this->ModelName->query("SELECT * FROM pictures;");</code></pre>
-
-<h3>Saving Data</h3>
-<pre><code>if ($this->ModelName->save($this->request->data)) {
-    $this->Session->setFlash('Data Saved!');
-}</code></pre>
-<h5>Save Many</h5>
-<pre><code>$data = array(
-    array('title' => 'title 1'),
-    array('title' => 'title 2'),
-);
-$this->ModelName->saveAll($data);
-</code></pre>
-
-<h3>Delete</h3>
-<pre><code>$this->Model->delete($this->request->data('Model.id'));</code></pre>
-<h5>Delete all</h5>
-<pre><code>$this->Model->deleteAll(array('Model.spam' => true), false);</code></pre>
-
-<h3>Behaviors</h3>
-<pre><code>public $actsAs = array(
-    'Cheat' => array(
-        'option1_key' => 'option1_value'
-    )
-);</code></pre>
-
-<p>Cheat Behaviors</p>
-<pre><code>class CheatBehavior extends ModelBehavior {
-
-    public function activate(Model $model, $method, $arg1) {
-        //Logic..
-    }
-}</code></pre>
-
-<p>Example:</p>
-<pre><code>$this->Game->Cheat('counterstrike');</code></pre>
 
 </div>
 
@@ -445,47 +216,18 @@ $Email->from(array('me@example.com' => 'My Site'))
     ->send('My message');
 </code></pre>
 
-<h5>Configuration</h5>
-<pre><code>class EmailConfig {
-    public $gmail = array(
-        'host' => 'ssl://smtp.gmail.com',
-        'port' => 465,
-        'username' => 'my@gmail.com',
-        'password' => 'secret',
-        'transport' => 'Smtp'
-    );
-}</code></pre>
-
 </div>
-
 
 <div class="span6">
 <h5>Choosing the sender</h5>
 <pre><code>$Email = new CakeEmail();
 $Email->sender('app@example.com', 'MyApp emailer');</code></pre>
 
-<h5>Configuration</h5>
-<pre><code>$Email = new CakeEmail();
-$Email->config('default');</code></pre>
-
-<h5>Attachment</h5>
-<pre><code>$Email->attachments(array(
-    'photo.png' => array(
-        'file' => '/full/some_hash.png',
-        'mimetype' => 'image/png',
-        'contentId' => 'my-unique-id'
-    )
-));</code></pre>
 
 </div>
 
 </div>
 </section>
-
-
-
-
-
 
 <!--- #############  TAGS ##########   -->
 
@@ -505,23 +247,6 @@ $Email->config('default');</code></pre>
     'prefix' => 'cake_short_'
 ));</code></pre>
 
-<h5>Caching Query example:</h5>
-<pre><code>public function newest() {
-    $result = Cache::read('all_posts', 'short');
-    if (!$result) {
-        $result = $this->find('all'));
-        Cache::write('all_posts', $result, 'short');
-    }
-    return $result;
-}</code></pre>
-
-<h4>Browser Caching</h4>
-<p>Cache for 5 Days</p>
-<pre><code>$this->response->cache('-1 minute', '+5 days');</code></pre>
-<p>Disable browser caching</p>
-<pre><code>$this->response->disableCache();</code></pre>
-<p>Expiration header</p>
-<pre><code>$this->response->expires('+5 days');</code></pre>
 
 </div>
 
@@ -534,48 +259,12 @@ $Email->config('default');</code></pre>
     'groups' => array('comment', 'post')
 ));</code></pre>
 
-<h5>Clearing Cache</h5>
-<pre><code>public function afterSave($created) {
-    if ($created) {
-        Cache::clearGroup('post', 'site_home');
-    }
-}</code></pre>
-
-<h5>Set Cache</h5>
-<pre><code>Cache::set(array('duration' => '+30 days'));</code></pre>
-<h5>Write Cache</h5>
-<pre><code>Cache::write('results', $data);</code></pre>
-<h5>Read Cache</h5>
-<pre><code>$results = Cache::read('results');</code></pre>
-
-<h4>Caching Elements</h4>
-<pre><code>echo $this->element('helpbox', array(
-        "helptext" => 'This will be $helptext',
-    ),
-    array(
-        "cache" => "short",
-        "callbacks" => true
-    )
-);</code></pre>
-
 </div>
 
 </div>
 </section>
 
-
-
-
-
-
-
-
-
 </section>
-
-
-
-
 
 <!-- End Main -->
 </section>
