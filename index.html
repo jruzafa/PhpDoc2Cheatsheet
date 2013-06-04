@@ -165,10 +165,19 @@ $GLOBALS['_myvar'] = 6;
 
 
 <h5>Simple model example:</h5>
-<pre><code>App::uses('AppModel', 'Model');
-class Ingredient extends AppModel {
-    public $name = 'Ingredient';
-}</code></pre>
+<pre><code>
+/**
+* An example class, this is grouped with
+* other classes in the "sample" package and
+* is part of "classes" subpackage
+* @package sample
+* @subpackage classes
+*/
+
+class myclass {
+...
+}
+</code></pre>
 
 
 <h3>Field</h3>
@@ -206,14 +215,19 @@ echo $this->Post->field('name');</code></pre>
 <div class="span6">
 
 <p>Load Class</p>
-<pre><code>App::uses('CakeEmail', 'Network/Email');</code></pre>
-
-<h5>Send Email example:</h5>
-<pre><code>$Email = new CakeEmail();
-$Email->from(array('me@example.com' => 'My Site'))
-    ->to('you@example.com')
-    ->subject('About')
-    ->send('My message');
+<pre><code>/**
+* A sample function docblock
+* @global string document the use $_myvar
+* @staticvar integer $staticvar is returned
+* @param string $param1 name to declare
+* @param string $param2 value of the name
+* @return integer
+*/
+function aFunc($param1, $param2='optional') {
+    static $staticvar = 7;
+    global $_myvar;
+    return $staticvar;
+}
 </code></pre>
 
 </div>
@@ -239,25 +253,359 @@ $Email->sender('app@example.com', 'MyApp emailer');</code></pre>
 
 <div class="span6">
 
-<h4>Cache Configuration example:</h4>
-<pre><code>Cache::config('short', array(
-    'engine' => 'File',
-    'duration' => '+1 hours',
-    'path' => CACHE,
-    'prefix' => 'cake_short_'
-));</code></pre>
+<h4>@api</h4>
+<pre><code>/**
+  * This method will not change until a major release.
+  *
+  * @api
+  *
+  * @return void
+  */
+  function showVersion()
+  {
+     <...>
+  }</code></pre>
+
+<h4>@author</h4>
+<pre><code> /**
+  * @author My Name
+  * @author My Name <my.name@example.com>
+  */</code></pre>
+
+ <h4>@category</h4>
+<pre><code> /**
+  * Page-Level DocBlock
+  *
+  * @category MyCategory
+  * @package  MyPackage
+  */</code></pre>
+
+
+
+<h4>@copyright</h4>
+<pre><code>  /**
+  * @copyright 1997-2005 The PHP Group
+  */</code></pre>
+
+<h4>@deprecated</h4>
+<pre><code> /**
+  * @deprecated
+  * @deprecated 1.0.0
+  * @deprecated No longer used by internal code and not recommended.
+  * @deprecated 1.0.0 No longer used by internal code and not recommended.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+ <h4>@example</h4>
+<pre><code> /**
+  * @example example1.php Counting in action.
+  * @example http://example.com/example2.phps Counting in action by a 3rd party.
+  * @example "My Own Example.php" My counting.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+ <h4>@filesource</h4>
+<pre><code>  /**
+  * @filesource
+  */</code></pre>
+
+ <h4>@deprecated</h4>
+<pre><code> /**
+  * @deprecated
+  * @deprecated 1.0.0
+  * @deprecated No longer used by internal code and not recommended.
+  * @deprecated 1.0.0 No longer used by internal code and not recommended.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+
+
+ <h4>@ignore</h4>
+<pre><code>  if ($ostest) {
+     /**
+      * This define will either be 'Unix' or 'Windows'
+      */
+     define("OS","Unix");
+ } else {
+     /**
+      * @ignore
+      */
+     define("OS","Windows");
+ }</code></pre>
+
+
+ <h4>@internal</h4>
+<pre><code>  /**
+  * @internal
+  *
+  * @return integer Indicates the number of items.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+ <h4>@internal</h4>
+<pre><code>  /**
+  * @internal
+  *
+  * @return integer Indicates the number of items.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+
+ <h4>@license</h4>
+<pre><code> /**
+  * @license GPL
+  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+  */</code></pre>
+
+
+ <h4>@method</h4>
+<pre><code>  class Parent
+ {
+     public function __call()
+     {
+         <...>
+     }
+ }
+
+ /**
+  * @method string getString()
+  * @method void setInteger(integer $integer)
+  * @method setString(integer $integer)
+  */
+ class Child extends Parent
+ {
+     <...>
+ }</code></pre>
+
+
+ <h4>@package</h4>
+<pre><code> /**
+  * @package PSR\Documentation\API
+  */</code></pre>
+
+
+ <h4>@param</h4>
+<pre><code> /**
+  * Counts the number of items in the provided array.
+  *
+  * @param mixed[] $array Array structure to count the elements of.
+  *
+  * @return int Returns the number of elements.
+  */
+ function count(array $items)
+ {
+     <...>
+ }</code></pre>
+
+
+ <h4>@property</h4>
+<pre><code>  class Parent
+ {
+     public function __get()
+     {
+         <...>
+     }
+ }
+
+ /**
+  * @property string $myProperty
+  */
+ class Child extends Parent
+ {
+     <...>
+ }</code></pre>
+
+
 
 
 </div>
 
-
 <div class="span6">
-<h5>Using Groups</h5>
-<pre><code>Cache::config('site_home', array(
-    'engine' => 'Redis',
-    'duration' => '+999 days',
-    'groups' => array('comment', 'post')
-));</code></pre>
+
+
+<h4>@property-read</h4>
+<pre><code>  class Parent
+ {
+     public function __get()
+     {
+         <...>
+     }
+ }
+
+ /**
+  * @property-read string $myProperty
+  */
+ class Child extends Parent
+ {
+     <...>
+ }</code></pre>
+
+ <h4>@property-write</h4>
+<pre><code>class Parent
+ {
+     public function __set()
+     {
+         <...>
+     }
+ }
+
+ /**
+  * @property-write string $myProperty
+  */
+ class Child extends Parent
+ {
+     <...>
+ }</code></pre>
+
+ <h4>@return (Singular type)</h4>
+<pre><code> /**
+  * @return integer Indicates the number of items.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+
+  <h4>@return (two types)</h4>
+<pre><code>  /**
+  * @return string|null The label's text or null if none provided.
+  */
+ function getLabel()
+ {
+     <...>
+ }</code></pre>
+
+
+<h4>@see</h4>
+<pre><code> /**
+  * @see http://example.com/my/bar Documentation of Foo.
+  * @see MyClass::$items           for the property whose items are counted
+  * @see MyClass::setItems()       to set the items for this collection.
+  *
+  * @return integer Indicates the number of items.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+ <h4>@since</h4>
+<pre><code> /**
+  * @since 1.0.1 First time this was introduced.
+  *
+  * @return integer Indicates the number of items.
+  */
+ function count()
+ {
+     <...>
+ }
+
+ /**
+  * @since 1.0.2 Added the $b argument.
+  * @since 1.0.1 Added the $a argument.
+  * @since 1.0.0
+  *
+  * @return void
+  */
+ function dump($a, $b)
+ {
+     <...>
+ }</code></pre>
+
+
+ <h4>@source</h4>
+<pre><code> /**
+  * @source 2 1 Check that ensures lazy counting.
+  */
+ function count()
+ {
+     if (null === $this->count) {
+         <...>
+     }
+ }</code></pre>
+
+ <h4>@subpackage</h4>
+<pre><code> /**
+  * @package PSR
+  * @subpackage Documentation\API
+  */</code></pre>
+
+
+ <h4>@throws</h4>
+<pre><code>  /**
+  * Counts the number of items in the provided array.
+  *
+  * @param mixed[] $array Array structure to count the elements of.
+  *
+  * @throws InvalidArgumentException if the provided argument is not of type
+  *     'array'.
+  *
+  * @return int Returns the number of elements.
+  */
+ function count($items)
+ {
+     <...>
+ }</code></pre>
+
+
+  <h4>@todo</h4>
+<pre><code>/**
+  * Counts the number of items in the provided array.
+  *
+  * @todo add an array parameter to count
+  *
+  * @return int Returns the number of elements.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+
+  <h4>@uses & @used-by</h4>
+<pre><code> /**
+  * @uses MyClass::$items to retrieve the count from.
+  *
+  * @return integer Indicates the number of items.
+  */
+ function count()
+ {
+     <...>
+ }</code></pre>
+
+
+   <h4>@version</h4>
+<pre><code> /**
+  * @version 1.0.1
+  */
+ class Counter
+ {
+     <...>
+ }
+
+ /**
+  * @version GIT: $Id$ In development. Very unstable.
+  */
+ class NeoCounter
+ {
+     <...>
+ }</code></pre>
 
 </div>
 
