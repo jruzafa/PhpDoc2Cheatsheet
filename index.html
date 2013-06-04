@@ -1,0 +1,1126 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PhpDoc Cheatsheet</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="Wessel Strengholt">
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/vendor.css" media="all">
+<link rel="icon" type="image/x-icon" href="http://www.phpdoc.org/bundles/phpdocumentorwebsite/images/logo-trans.png">
+</head>
+<body id="top">
+
+
+<div id="container" class="container">
+<div class="inner">
+<div id="controller">
+
+<header>
+    <div id="title">PhpDoc2Cheatsheet</div>
+    <h1>Lot of Code Snippets for PhpDoc2Cheatsheet</h1>
+    <span class="version">v 2.0.0</span>
+</header>
+<div class="nav-container" style="height: auto;">
+    <nav class="" style="top: 0px;">
+        <ul class="nav nav-pills">
+            <li>
+                <a href="#" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;File&#39;]);">File</a>
+            </li>
+            <li>
+                <a href="#views" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Variable&#39;]);">Variable</a>
+            </li>
+            <li>
+                <a href="#models" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Class&#39;]);">Class</a>
+            </li>
+            <li>
+                <a href="#email" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Function&#39;]);">Function</a>
+            </li>
+            <li>
+                <a href="#caching" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Tags&#39;]);">Tags</a>
+            </li>
+            <li>
+                <a href="#forms" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Forms&#39;]);">Forms</a>
+            </li>
+            <li>
+                <a href="#html" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;HTML&#39;]);">HTML</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<section id="main_content">
+
+<!--- #############  FILE ##########   -->
+<section>
+<h2 id="controllers">FILE<a href="#top" class="small">back to top</a></h2>
+<hr>
+<!-- <p>Here are some useful shortcuts and functions regarding the request object in Symfony 2 controllers.</p> -->
+<h4>Sample file docBlock</h4>
+<div class="row">
+
+<div class="span6">
+<pre><code>/** File docBlock description
+*
+* This block demonstrates the rich
+* information that can be included
+* in in-code documentation through
+* DocBlocks and tags
+* @author Jane Doe <jdoe@php.net>
+* @version 1.0
+* @package sample
+*/</code></pre>
+
+</div>
+
+
+<div class="span6">
+    <h5>Redirecting:</h5>
+    <pre><code>$this->redirect(array('controller' => 'orders', 'action' => 'thanks'));</code></pre>
+
+    <h5>Redirecting to website:</h5>
+    <pre><code>$this->redirect('http://www.example.com');</code></pre>
+
+    <h5>Render the element for ajax:</h5>
+    <pre><code>$this->render('/Elements/ajaxreturn');</code></pre>
+
+    <h5>Redirect to 404 not found:</h5>
+    <pre><code>throw new NotFoundException('404 Error - Page not found');</code></pre>
+
+    <h5>Before filter</h5>
+    <pre><code>public function beforeFilter()
+{
+    parent::beforeFilter();
+    $this->Auth->allow('view');
+}</code>
+</div>
+
+<div class="span6">
+<h4>Retrieving data from view</h4>
+<p>From Element view:</p>
+<pre><code>$comments = $this->requestAction('/comments/latest');
+foreach ($comments as $comment) {
+    echo $comment['Comment']['title'];
+}</code></pre>
+
+<p>In Controller:</p>
+<pre><code>$this->requestAction(
+    array('controller' => 'articles', 'action' => 'featured'),
+    array('return')
+);</code></pre>
+
+<h4>Load Model</h4>
+<pre><code>$this->loadModel('Article');
+$Articles = $this->Article->find('all');
+
+$this->loadModel('User', 2);
+$user = $this->User->read();</code></pre>
+</div>
+</div>
+</section>
+
+
+<!--- #############  VARIABLE ##########   -->
+
+
+<section>
+<h2 id="views">VARIABLE<a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+
+<h4>Elements</h4>
+
+<p>Display Elemtent</p>
+<pre><code>echo $this->element('helpbox');</code></pre>
+
+<p>Passing Variables into an Element</p>
+<pre><code>echo $this->element('helpbox', array(
+    "helptext" => "Oh, this text is very helpful."
+));
+
+// inside helpbox.ctp
+echo $helptext;</code></pre>
+
+<p>Caching Elements</p>
+<pre><code>echo $this->element('helpbox', array(), array('cache' => true));</code></pre>
+<h4>Page Titles</h4>
+
+<p>From Controller</p>
+<pre><code>$this->set('title_for_layout', 'View Active Users');</code></pre>
+
+<p>From View:</p>
+<pre><code>$this->set('title_for_layout', $titleContent);</code></pre>
+</div>
+
+
+<div class="span6">
+    <h5>Layouts</h5>
+    <pre><code>$this->layout = 'admin';</code></pre>
+
+    <h5>Fetch content</h5>
+    <pre><code>echo $this->fetch('content');</code></pre>
+
+    <h5>Retrieving data:</h5>
+<pre><code>$this->requestAction('/articles/featured/limit:3');
+$this->requestAction('/articles/view/5');</code></pre>
+
+<h5>Insert Stylesheet</h5>
+<pre><code>echo $this->Html->css('forms');</code></pre>
+
+<h5>Insert Javascript</h5>
+<pre><code>echo $this->Html->script('scripts');</code></pre>
+</div>
+
+</div>
+</section>
+
+
+
+
+<!--- #############  MODELS ##########   -->
+
+
+<section>
+<h2 id="models">MODELS <a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+
+
+<h5>Simple model example:</h5>
+<pre><code>App::uses('AppModel', 'Model');
+class Ingredient extends AppModel {
+    public $name = 'Ingredient';
+}</code></pre>
+
+<h3>Relations</h3>
+<h5>Has One</h5>
+<pre><code>public $hasOne = array(
+    'Profile' => array(
+        'className'    => 'Profile',
+        'conditions'   => array('Profile.published' => '1'),
+        'dependent'    => true
+    )
+);</code></pre>
+
+<h5>BelongsTo Relation</h5>
+<pre><code>public $belongsTo = array(
+    'User' => array(
+        'className'    => 'User',
+        'foreignKey'   => 'user_id'
+    )
+);</code></pre>
+
+<h5>Has Many</h5>
+<pre><code>public $hasMany = array(
+    'Comment' => array(
+        'className'     => 'Comment',
+        'foreignKey'    => 'user_id',
+        'conditions'    => array('Comment.status' => '1'),
+        'order'         => 'Comment.created DESC',
+        'limit'         => '5',
+        'dependent'     => true
+    )
+);</code></pre>
+
+<h5>Mas Many and Belongs to</h5>
+<pre><code>public $hasAndBelongsToMany = array(
+'Ingredient' =>
+    array(
+        'className'              => 'Ingredient',
+        'joinTable'              => 'ingredients_recipes',
+        'foreignKey'             => 'recipe_id',
+        'associationForeignKey'  => 'ingredient_id',
+        'unique'                 => true
+    )
+);</code></pre>
+
+
+<h5>Limit results hasMany</h5>
+<p>Limits the maximum number of results for the child hasMany model</p>
+<pre><code>$this->ModelName->hasMany['ChildModelName']['limit'] = 10;</code></pre>
+
+
+<h3>Validation</h3>
+<p>Single Field validation</p>
+<pre><code>public $validate = array(
+    'fieldName1' => array(
+        'rule'       => 'ruleName',
+        'required'   => true,
+        'allowEmpty' => false,
+        'on'         => 'create',
+        'message'    => 'Your Error Message'
+    )
+);</code></pre>
+
+<p>Multiple rules per field</p>
+<pre><code>public $validate = array(
+    'login' => array(
+        'loginRule-1' => array(
+            'rule'    => 'alphaNumeric',
+            'message' => 'Only alphabets and numbers',
+         ),
+        'loginRule-2' => array(
+            'rule'    => array('minLength', 8),
+            'message' => 'Minimum length of 8 characters'
+        )
+    )
+);</code></pre>
+
+<h4>Validate from controller</h4>
+<p>First, set the data to the model:</p>
+<pre><code>$this->ModelName->set($this->request->data);</code></pre>
+<p>Then, to check if the data validates, use the validates method of the model, which will return true if it validates and false if it doesn’t:</p>
+<pre><code>if ($this->ModelName->validates()) {
+    // it validated logic
+} else {
+    // didn't validate logic
+    $errors = $this->ModelName->validationErrors;
+}</code></pre>
+<p>Retrieve the validation errors in an array:</p>
+<pre><code>$errors = $this->ModelName->invalidFields();</code></pre>
+
+<h3>Schema</h3>
+<pre><code>public $_schema = array(
+    'id' => array(
+        'type' => 'integer',
+        'length' => 12
+    ),
+    'title' => array(
+        'type' => 'string',
+        'length' => 40
+    ),
+    'created' => array(
+        'type' => 'datetime'
+    ),
+    'message' => array('type' => 'text')
+);</code></pre>
+
+
+<h3>Field</h3>
+<p>echo the name for row id 22</p>
+<pre><code>$this->Post->id = 22;
+echo $this->Post->field('name');</code></pre>
+
+
+</div>
+
+
+<div class="span6">
+<h3>Model Attributes</h3>
+<h5>Database config</h5>
+<pre><code>public $useDbConfig = 'alternate';</code></pre>
+<h5>Table Prefix</h5>
+<pre><code>public $tablePrefix = 'alternate_';</code></pre>
+<h5>Primary Key</h5>
+<pre><code>public $primaryKey = 'example_id';</code></pre>
+<h5>Display field</h5>
+<pre><code>public $displayField = 'fieldname';</code></pre>
+
+
+<h3>Retrieving Data</h3>
+    <h5>Find all</h5>
+    <pre><code>$this->ModelName->find('all');</code></pre>
+
+    <h5>Find by name</h5>
+    <pre><code>$this->ModelName->findByName('name');</code></pre>
+
+    <h5>Find First</h5>
+    <pre><code>$this->ModelName->find('first');</code></pre>
+
+    <h5>Count</h5>
+    <pre><code>$this->ModelName->find('count');</code></pre>
+
+    <h5>Find List</h5>
+    <pre><code>$this->ModelName->find('list');</code></pre>
+
+<h4>findAllBy</h4>
+    <h5>Product.order_status = 3</h5>
+    <pre><code>$this->Product->findAllByOrderStatus('3');</code></pre>
+
+    <h5>Recipe.type = 'Cookie'</h5>
+    <pre><code>$this->Recipe->findAllByType('Cookie');</code></pre>
+
+    <h5>User.last_name = 'Anderson'</h5>
+    <pre><code>$this->User->findAllByLastName('Anderson');</code></pre>
+
+    <h5>Cake.id = 7</h5>
+    <pre><code>$this->Cake->findAllById(7);</code></pre>
+
+    <h5>User.email = 'jhon' OR User.username = 'jhon';</h5>
+    <pre><code>$this->User->findAllByEmailOrUsername('jhon', 'jhon');</code></pre>
+
+<h4>findBy</h4>
+    <h5>Product.order_status = 3</h5>
+    <pre><code>$this->Product->findByOrderStatus('3');</code></pre>
+
+    <h5>Recipe.type = 'Cookie'</h5>
+    <pre><code>$this->Recipe->findByType('Cookie');</code></pre>
+
+    <h5>Cake.id = 7</h5>
+    <pre><code>$this->Cake->findById(7);</code></pre>
+
+
+    <h5>Conditions</h5>
+    <pre><code>$conditions = array(
+    'conditions' => array('Model.field' => $thisValue),
+    'recursive' => 1, //int
+    'fields' => array('Model.field', 'DISTINCT Model.field'),
+    'order' => array('Model.created', 'Model.field3 DESC'),
+    'group' => array('Model.field'),
+    'limit' => n, //int
+    'page' => n, //int
+    'offset' => n, //int
+    'callbacks' => true
+);</code></pre>
+    <p>Example for this:</p>
+    <pre><code>$this->ModelName->find('all', $conditions);</code></pre>
+
+    <h5>Compact</h5>
+    <pre><code>$this->set(compact('categories'));</code></pre>
+
+    <h5>Query</h5>
+    <pre><code>$this->ModelName->query("SELECT * FROM pictures;");</code></pre>
+
+<h3>Saving Data</h3>
+<pre><code>if ($this->ModelName->save($this->request->data)) {
+    $this->Session->setFlash('Data Saved!');
+}</code></pre>
+<h5>Save Many</h5>
+<pre><code>$data = array(
+    array('title' => 'title 1'),
+    array('title' => 'title 2'),
+);
+$this->ModelName->saveAll($data);
+</code></pre>
+
+<h3>Delete</h3>
+<pre><code>$this->Model->delete($this->request->data('Model.id'));</code></pre>
+<h5>Delete all</h5>
+<pre><code>$this->Model->deleteAll(array('Model.spam' => true), false);</code></pre>
+
+<h3>Behaviors</h3>
+<pre><code>public $actsAs = array(
+    'Cheat' => array(
+        'option1_key' => 'option1_value'
+    )
+);</code></pre>
+
+<p>Cheat Behaviors</p>
+<pre><code>class CheatBehavior extends ModelBehavior {
+
+    public function activate(Model $model, $method, $arg1) {
+        //Logic..
+    }
+}</code></pre>
+
+<p>Example:</p>
+<pre><code>$this->Game->Cheat('counterstrike');</code></pre>
+
+</div>
+
+</div>
+</section>
+
+
+
+
+<!--- #############  MAIL ##########   -->
+
+
+<section>
+<h2 id="email">EMAIL <a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+
+<p>Load Class</p>
+<pre><code>App::uses('CakeEmail', 'Network/Email');</code></pre>
+
+<h5>Send Email example:</h5>
+<pre><code>$Email = new CakeEmail();
+$Email->from(array('me@example.com' => 'My Site'))
+    ->to('you@example.com')
+    ->subject('About')
+    ->send('My message');
+</code></pre>
+
+<h5>Configuration</h5>
+<pre><code>class EmailConfig {
+    public $gmail = array(
+        'host' => 'ssl://smtp.gmail.com',
+        'port' => 465,
+        'username' => 'my@gmail.com',
+        'password' => 'secret',
+        'transport' => 'Smtp'
+    );
+}</code></pre>
+
+</div>
+
+
+<div class="span6">
+<h5>Choosing the sender</h5>
+<pre><code>$Email = new CakeEmail();
+$Email->sender('app@example.com', 'MyApp emailer');</code></pre>
+
+<h5>Configuration</h5>
+<pre><code>$Email = new CakeEmail();
+$Email->config('default');</code></pre>
+
+<h5>Attachment</h5>
+<pre><code>$Email->attachments(array(
+    'photo.png' => array(
+        'file' => '/full/some_hash.png',
+        'mimetype' => 'image/png',
+        'contentId' => 'my-unique-id'
+    )
+));</code></pre>
+
+</div>
+
+</div>
+</section>
+
+
+
+
+
+
+<!--- #############  CACHING ##########   -->
+
+
+<section>
+<h2 id="caching">CACHING <a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+
+<h4>Cache Configuration example:</h4>
+<pre><code>Cache::config('short', array(
+    'engine' => 'File',
+    'duration' => '+1 hours',
+    'path' => CACHE,
+    'prefix' => 'cake_short_'
+));</code></pre>
+
+<h5>Caching Query example:</h5>
+<pre><code>public function newest() {
+    $result = Cache::read('all_posts', 'short');
+    if (!$result) {
+        $result = $this->find('all'));
+        Cache::write('all_posts', $result, 'short');
+    }
+    return $result;
+}</code></pre>
+
+<h4>Browser Caching</h4>
+<p>Cache for 5 Days</p>
+<pre><code>$this->response->cache('-1 minute', '+5 days');</code></pre>
+<p>Disable browser caching</p>
+<pre><code>$this->response->disableCache();</code></pre>
+<p>Expiration header</p>
+<pre><code>$this->response->expires('+5 days');</code></pre>
+
+</div>
+
+
+<div class="span6">
+<h5>Using Groups</h5>
+<pre><code>Cache::config('site_home', array(
+    'engine' => 'Redis',
+    'duration' => '+999 days',
+    'groups' => array('comment', 'post')
+));</code></pre>
+
+<h5>Clearing Cache</h5>
+<pre><code>public function afterSave($created) {
+    if ($created) {
+        Cache::clearGroup('post', 'site_home');
+    }
+}</code></pre>
+
+<h5>Set Cache</h5>
+<pre><code>Cache::set(array('duration' => '+30 days'));</code></pre>
+<h5>Write Cache</h5>
+<pre><code>Cache::write('results', $data);</code></pre>
+<h5>Read Cache</h5>
+<pre><code>$results = Cache::read('results');</code></pre>
+
+<h4>Caching Elements</h4>
+<pre><code>echo $this->element('helpbox', array(
+        "helptext" => 'This will be $helptext',
+    ),
+    array(
+        "cache" => "short",
+        "callbacks" => true
+    )
+);</code></pre>
+
+</div>
+
+</div>
+</section>
+
+
+
+
+
+
+
+<!--- #############  FORMS ##########   -->
+
+
+<section>
+<h2 id="forms">FORMS <a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+
+<h3>Creating Forms</h3>
+<pre><code>echo $this->Form->create('Recipe');</code></pre>
+<p>Using Get Method
+<pre><code>echo $this->Form->create('User', array('type' => 'get'));</code></pre>
+<p>With file upload</p>
+<pre><code>echo $this->Form->create('User', array('type' => 'file'));</code></pre>
+<p>Action to URL</p>
+<pre><code>echo $this->Form->create(null, array('url' => '/recipe/add'));</code></pre>
+<p>Action to controller:</p>
+<pre><code>echo $this->Form->create(null, array(
+    'url' => array('controller' => 'recipe', 'action' => 'add')
+));</code></pre>
+
+<h4>Closing the form</h4>
+<pre><code>echo $this->Form->end('Submit');</code></pre>
+
+<h3>Buttons</h3>
+<pre><code>echo $this->Form->button('Click me');
+echo $this->Form->button('Button', array('type' => 'button'));
+echo $this->Form->button('Reset', array('type' => 'reset'));
+echo $this->Form->button('Submit', array('type' => 'submit'));</code></pre>
+
+<h3>Setting defaults for all the fields</h3>
+<pre><code>echo $this->Form->inputDefaults(array(
+        'label' => false,
+        'div' => false,
+        'class' => 'fancy'
+    )
+);</code></pre>
+
+
+</div>
+
+
+<div class="span6">
+<h5>Password:</h5>
+<pre><code>echo $this->Form->input('password');</code></pre>
+<h5>Username:</h5>
+<pre><code>echo $this->Form->input('username', array('label' => 'Username'));</code></pre>
+<h5>Birthday:</h5>
+<pre><code>echo $this->Form->input('birth_dt', array(
+    'label' => 'Date of birth',
+    'dateFormat' => 'DMY',
+    'minYear' => date('Y') - 70,
+    'maxYear' => date('Y') - 18,
+));</code></pre>
+<h5>Email:</h5>
+<pre><code>echo $this->Form->input('email', array('type' => 'email'));</code></pre>
+<h5>File:</h5>
+<pre><code>echo $this->Form->input('field', array('type' => 'file'));</code></pre>
+<h5>Hidden:</h5>
+<pre><code>echo $this->Form->hidden('id');</code></pre>
+<h5>Textarea:</h5>
+<pre><code>echo $this->Form->textarea('notes');</code></pre>
+
+<h5>Options:</h5>
+<pre><code>echo $this->Form->input('field', array(
+    'options' => array(1, 2, 3, 4, 5),
+    'empty' => '(choose one)'
+));</code></pre>
+
+<h5>Checkbox:</h5>
+<pre><code>echo $this->Form->checkbox('published', array('hiddenField' => false));</code></pre>
+
+<h5>Radio:</h5>
+<pre><code>$options = array('M' => 'Male', 'F' => 'Female');
+$attributes = array('legend' => false);
+echo $this->Form->radio('gender', $options, $attributes);</code></pre>
+
+<h5>Year:</h5>
+<pre><code>echo $this->Form->year('purchased', 2000, date('Y'));</code></pre>
+
+<h5>Day</h5>
+<pre><code>echo $this->Form->day('created');</code></pre>
+
+</div>
+
+</div>
+</section>
+
+
+
+
+<!--- #############  CONSOLE & SHELL ##########   -->
+
+
+<section>
+<h2 id="html">HTML Helper <a href="#top" class="small">back to top</a></h2>
+<hr>
+
+<div class="row">
+
+
+
+
+<div class="span6">
+
+<h4>Charset</h4>
+<pre><code>echo $this->Html->charset('ISO-8859-1');</code></pre>
+<h4>Stylesheet</h4>
+<pre><code>echo $this->Html->css('forms');</code></pre>
+<p>Or multiple Stylesheets</p>
+<pre><code>echo $this->Html->css(array('forms', 'tables', 'menu'));</code></pre>
+<h4>Javascript</h4>
+<pre><code>echo $this->Html->script('scripts');</code></pre>
+<p>From remote:</p>
+<pre><code>$this->Html->script('http://code.jquery.com/jquery.min.js');</code></pre>
+
+<h4>Favicon</h4>
+<pre><code>echo $this->Html->meta(
+    'favicon.ico',
+    '/favicon.ico',
+    array('type' => 'icon')
+);</code></pre>
+<h4>Page Description</h4>
+<pre><code>echo $this->Html->meta(
+    'description',
+    'enter any meta description here'
+);</code></pre>
+<h4>Doctype</h4>
+<pre><code>echo $this->Html->docType('html5');</code></pre>
+<h4>Audio</h4>
+<pre><code>echo $this->Html->media('audio.mp4');</code></pre>
+
+
+
+</div>
+
+
+<div class="span6">
+    <h5>Hyperlink</h5>
+    <pre><code>echo $this->Html->link(
+    'Click me',
+    array('controller' => 'dashboards', 'action' => 'index')
+);</code></pre>
+    <p>or</p>
+    <pre><code>echo $this->Html->link('Click', '/page/home');</code></pre>
+
+
+    <h5>Image</h5>
+    <pre><code>echo $this->Html->image('logo.png', array('alt' => 'Cake'));</code></pre>
+
+    <h5>Image with Link</h5>
+    <pre><code>echo $this->Html->image("recipes/6.jpg", array(
+    "alt" => "Brownies",
+    'url' => array('controller' => 'contr', 'action' => 'add')
+));</code></pre>
+
+<h5>Span tag</h5>
+<pre><code>echo $this->Html->tag('span', 'Hello World.', array('class' => 'welcome'));</code></pre>
+
+<h5>Div</h5>
+<pre><code>echo $this->Html->div('error', 'Please enter your credit card number.');</code></pre>
+
+<h5>Table header</h5>
+<pre><code>$this->Html->tableHeaders(array('Date', 'Title', 'Sweet'));</code></pre>
+<h4>Table Cells</h4>
+<pre><code>$this->Html->tableCells(array(
+    array('Jul 7th, 2007', 'Best Brownies', 'Yes'),
+    array('Jun 21st, 2007', 'Smart Cookies', 'Yes'),
+    array('Aug 1st, 2006', 'Anti-Java Cake', 'No'),
+));</code></pre>
+
+</div>
+
+</div>
+</section>
+
+
+
+<!--- #############  PAGINATION ##########   -->
+
+
+<section>
+<h2 id="paginator">PAGINATOR <a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+<h4>Paginate setup:</h4>
+<pre><code>public $paginate = array(
+    'limit' => 25,
+    'order' => array(
+        'Post.title' => 'asc'
+    )
+);</code></pre>
+
+<h4>Paginator Example:</h4>
+<pre><code>public function list_recipes() {
+    $this->paginate = array(
+        'conditions' => array('Recipe.title LIKE' => 'a%'),
+        'limit' => 10
+    );
+    $data = $this->paginate('Recipe');
+    $this->set(compact('data'));
+);</code></pre>
+
+<h5>Max Limit</h5>
+<pre><code>public $paginate = array(
+    // other keys here.
+    'maxLimit' => 10
+);</code></pre>
+
+<h5>Paginate with GET</h5>
+<pre><code>public $paginate = array(
+    'paramType' => 'querystring'
+);</code></pre>
+<pre><code>$this->Paginator->settings['paramType'] = 'querystring';</code></pre>
+
+<h5>Modifying the options</h5>
+<pre><code>$this->Paginator->options(array(
+    'url' => array(
+        'sort' => 'email', 'direction' => 'desc', 'page' => 6,
+        'lang' => 'en'
+    )
+));</code></pre>
+
+<h4>Paginator with Ajax</h4>
+<p>Add component
+<pre><code>public $components = array('RequestHandler');
+public $helpers = array('Js');</code></pre>
+
+<p>Include JQuery</p>
+<pre><code>echo $this->Html->script('jquery');</code></pre>
+<p>In your view:</p>
+<pre><code>$this->Paginator->options(array(
+    'update' => '#content',
+    'evalScripts' => true
+));</code></pre>
+
+<p>Add this to the bottom of view</p>
+<pre><code>echo $this->Js->writeBuffer();</code></pre>
+
+</div>
+
+
+<div class="span6">
+<h3>Paginator in viewer</h3>
+<h4>Sort</h4>
+<pre><code>echo $this->Paginator->sort('user_id');</code></pre>
+<p>With title</p>
+<pre><code>echo $this->Paginator->sort('user_id', 'User account');</code></pre>
+<p>With custom HTML</p>
+<pre><code>echo $this->Paginator->sort('user_id', '<em>User account</em>', array('escape' => false));</code></pre>
+<p>Direction</p>
+<pre><code>echo $this->Paginator->sort('user_id', null, array('direction' => 'desc'));</code></pre>
+
+<h4>Numbers</h4>
+<p>Display numbers</p>
+<pre><code>echo $this->Paginator->numbers();</code></pre>
+<p>Display first and last 2</p>
+<pre><code>echo $this->Paginator->numbers(array('first' => 2, 'last' => 2));</code></pre>
+
+<h4>Previous</h4>
+<pre><code>echo $this->Paginator->prev(' << ' . __('previous'), array(), null, array('class' => 'prev disabled'));</code></pre>
+
+<h4>Next</h4>
+<pre><code>echo $this->Paginator->next(__('next').' >> ', array(), null, array('class' => 'next disabled'));</code></pre>
+
+<h4>Current</h4>
+<pre><code>echo $this->Paginator->current('Comment');</code></pre>
+
+
+
+</div>
+
+
+</div>
+</section>
+
+
+<!--- #############  CONSOLE & SHELL ##########   -->
+
+
+<section>
+<h2 id="utilities">UTILITIES <a href="#top" class="small">back to top</a></h2>
+<hr>
+<div class="row">
+
+<div class="span6">
+
+<h3>Numbers</h3>
+
+<p>Include Class</p>
+<pre><code>App::uses('CakeNumber', 'Utility');</code></pre>
+<h4>Currency</h4>
+<pre><code>echo CakeNumber::currency('1234.56', 'EUR');
+echo $this->Number->currency('1234.56', 'EUR');
+</code></pre>
+
+<h4>Precision</h4>
+<p>Outputs: 456.92</p>
+<pre><code>echo $this->Number->precision(456.91873645, 2);</code></pre>
+
+<h4>Percentage</h4>
+<p>Outputs: 45.69%</p>
+<pre><code>echo $this->Number->toPercentage(45.691873645);</code></pre>
+
+<h4>ReadableSize</h4>
+<p>Outputs: 1.26 MB</p>
+<h6>As NumberHelper</h6>
+<pre><code>echo $this->Number->toReadableSize(1321205.76);</code></pre>
+<h6>As CakeNumber</h6>
+<pre><code>echo CakeNumber::toReadableSize(1321205.76);</code></pre>
+
+<h4>Numberformat</h4>
+<p>Outputs: '¥ 123,456.79'</p>
+<h6>As NumberHelper</h6>
+<pre><code>echo $this->Number->format('123456.7890', array(
+    'places' => 2,
+    'before' => '¥ ',
+    'escape' => false,
+    'decimals' => '.',
+    'thousands' => ','
+));</code></pre>
+<h6>As CakeNumber</h6>
+<pre><code>App::uses('CakeNumber', 'Utility');
+echo CakeNumber::format('123456.7890', array(
+    'places' => 2,
+    'before' => '¥ ',
+    'escape' => false,
+    'decimals' => '.',
+    'thousands' => ','
+));</code></pre>
+
+<h3>Sanitization</h3>
+<pre><code>$badString = '<span><</span>font size="99" color="#FF0000">HEY<span><</span>/font><span><</span>script>...<span><</span>/script>';</code></pre>
+<p>Outputs: &lt;font size=&quot;99&quot; color=&quot;#FF0000&quot;&gt;HEY&lt;/font&gt;&lt;script&gt;...&lt;/script&gt;</p>
+<pre><code>echo Sanitize::html($badString);</code></pre>
+<p>Outputs: HEY...</p>
+<pre><code>echo Sanitize::html($badString, array('remove' => true));</code></pre>
+
+<h3>Folder</h3>
+<h6>Create Dir</h6>
+<pre><code>$dir = new Folder('/path/to/folder');</code></pre>
+<h6>Create dir with permission</h6>
+<pre><code>$dir = new Folder('/path/to/folder', true, 0755);
+</code></pre>
+<h6>Search for all .ctp:</h6>
+<pre><code>$files = $dir->find('.*\.ctp');</code></pre>
+<h6>Read file</h6>
+<pre><code>$contents = $file->read();</code></pre>
+<h6>Copy folder</h6>
+<pre><code>$folder1 = new Folder('/path/to/folder1');
+$folder1->copy('/path/to/folder2');</code></pre>
+<h6>Delete</h6>
+<pre><code>$folder = new Folder('foo');
+if ($folder->delete()) {
+    // Successfully deleted foo its nested folders
+}</code></pre>
+
+<h3>String</h3>
+<p>Include class</p>
+<pre><code>App::uses('String', 'Utility');</code></pre>
+<h6>Insert</h6>
+<p>Outputs: My name is Bob and I am 65 years old.</p>
+<pre><code>String::insert('My name is :name and I am :age years old.', array('name' => 'Bob', 'age' => '65'));</code></pre>
+<h6>Highlight</h6>
+<pre><code>echo $this->Text->highlight($lastSentence, 'using', array('format' => '<span><</span>span class="highlight">\1<span><</span>/span>'));</code></pre>
+
+<h3>Truncate</h3>
+<p>Outputs: The killer crept...</p>
+<h6>As TextHelper</h6>
+<pre><code>echo $this->Text->truncate(
+    'The killer crept forward and tripped on the rug.',
+    22,
+    array(
+        'ellipsis' => '...',
+        'exact' => false
+    )
+);</code></pre>
+
+<h6>As String</h6>
+<pre><code>echo String::truncate(
+    'The killer crept forward and tripped on the rug.',
+    22,
+    array(
+        'ellipsis' => '...',
+        'exact' => false
+    )
+);</code></pre>
+
+<h3>Sessions</h3>
+<h6>read the session</h6>
+<pre><code>$green = $this->Session->read('Person.eyeColor');</code></pre>
+<h6>Delete session</h6>
+<pre><code>$this->Session->delete('Person.eyeColor');</code></pre>
+<pre><code>$this->Session->delete('Person');</code></pre>
+<h6>Destroy</h6>
+<pre><code>$this->Session->destroy();</code></pre>
+<h4>User Agent</h4>
+<pre><code>$this->Session->read('Config.userAgent');</code></pre>
+<h4>Auth</h4>
+<pre><code>if ($this->Auth->user('role') === 'admin') {
+    $this->theme = 'Admin';
+}
+</code></pre>
+
+
+</div>
+
+
+<div class="span6">
+    <h3>Time</h3>
+    <h4>Formats</h4>
+    <p>Outputs: August 22nd, 2011 11:53 AM</p>
+    <pre><code>$this->Time->format('F jS, Y h:i A', '2011-08-22 11:53:00');</code></pre>
+
+    <h4>To Timestamp</h4>
+    <p>Outputs: 1313971200</p>
+    <pre><code>echo $this->Time->fromString('Aug 22, 2011');</code></pre>
+
+    <h4>Nice</h4>
+    <p>Outputs: Mon, Aug 22nd 2011, 11:53</p>
+    <h6>As TimeHelper</h6>
+    <pre><code>echo $this->Time->nice('2011-08-22 11:53:00');</code></pre>
+    <h6>As CakeTime</h6>
+    <pre><code>echo CakeTime::nice('2011-08-22 11:53:00');</code></pre>
+
+    <h4>Nice Short</h4>
+    <p>Outputs: Aug 22nd, 11:53</p>
+    <h6>As TimeHelper</h6>
+    <pre><code>echo $this->Time->niceShort('2011-08-22 11:53:00');</code></pre>
+    <h6>As CakeTime</h6>
+    <pre><code>echo CakeTime::niceShort('2011-08-22 11:53:00');</code></pre>
+
+    <h4>timeAgoInWords</h4>
+    <p>Outputs: 2 months, 2 weeks, 6 days ago</p>
+    <h6>As TimeHelper</h6>
+    <pre><code>echo $this->Time->timeAgoInWords('Aug 22, 2011', array('format' => 'F jS, Y', 'end' => '+1 year'));</code></pre>
+    <h6>As CakeTime</h6>
+    <pre><code>echo CakeTime::timeAgoInWords('Aug 22, 2011', array('format' => 'F jS, Y', 'end' => '+1 year'));</code></pre>
+
+    <h4>Convert</h4>
+    <p>Outputs: 1321038036</p>
+    <h6>As TimeHelper</h6>
+    <pre><code>echo $this->Time->convert(time(), 'Asia/Jakarta');</code></pre>
+    <h6>As CakeTime</h6>
+    <pre><code>echo CakeTime::convert(time(), new DateTimeZone('Asia/Jakarta'));</code></pre>
+
+
+
+<h3>Logging</h3>
+<h6>Config</h6>
+<pre><code>CakeLog::config('otherFile', array(
+    'engine' => 'DatabaseLogger',
+    'model' => 'LogEntry',
+));
+</code></pre>
+
+<p>Results in this being appended to app/tmp/logs/error.log</p>
+<pre><code>$this->log("Something didn't work!");</code></pre>
+
+<p>Results in this being appended to app/tmp/logs/activity.log</p>
+<pre><code>CakeLog::write('activity', 'A special message for you!');</code></pre>
+
+<h3>Routing</h3>
+<pre><code>Router::connect(
+    '/myprofile',
+    array('controller' => 'users', 'action' => 'view', 1)
+);</code></pre>
+
+<h3>Encryption</h3>
+
+<h5>Cipher</h5>
+<p>Encrypt your text with my_key</p>
+<pre><code>$secret = Security::cipher('hello world', 'my_key');</code></pre>
+<p>Decrypt your text</p>
+<pre><code>$nosecret = Security::cipher($secret, 'my_key');</code></pre>
+
+<h5>rijndael</h5>
+<p>Encrypt</p>
+<pre><code>$encrypted = Security::rijndael('a secret', Configure::read('Security.key'), 'encrypt');</code></pre>
+<p>Decrypt</p>
+<pre><code>$decrypted = Security::rijndael($encrypted, Configure::read('Security.key'), 'decrypt');</code></pre>
+
+<h5>CakePHP Salt</h5>
+<p>Sha1</p>
+<pre><code>$sha1 = Security::hash('CakePHP Framework', 'sha1', true);</code></pre>
+<p>md5</p>
+<pre><code>$md5 = Security::hash('CakePHP Framework', 'md5', 'my-salt');</code></pre>
+<p>hash</p>
+<pre><code>$hash = Security::hash('CakePHP Framework');</code></pre>
+
+<h3>XML</h3>
+<h6>Import XML</h6>
+<pre><code>$xml = Xml::build('http://bakery.cakephp.org/articles/rss');</code></pre>
+<p>Old method</p>
+<pre><code>$xml = new Xml('http://bakery.cakephp.org/articles/rss');</code></pre>
+
+<h3>Flash</h3>
+<p>Display good message</p>
+<pre><code>$this->Session->setFlash('Bad!.', 'default', array(), 'bad');</code></pre>
+<p>Display bad message</p>
+<pre><code>$this->Session->setFlash('Good.', 'default', array(), 'good');</code></pre>
+
+<h3>Cookie</h3>
+<h6>Write cookie</h6>
+<pre><code>$this->Cookie->write('name', 'Larry');</code></pre>
+<p>Expire after 1 hour</p>
+<pre><code>$this->Cookie->write('name', 'Larry', false, 3600);</code></pre>
+<h6>Read cookie</h6>
+<pre><code>echo $this->Cookie->read('name');</code></pre>
+<h6>Delete Cookie</h6>
+<pre><code>$this->Cookie->delete('name');</code></pre>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+<!-- End Main -->
+</section>
+</div>
+</div>
+
+
+<footer>
+<div class="row">
+<div class="span9">
+PhpDoc2Cheatsheet by
+<a href="https://twitter.com/jruzafa">jruzafa</a><br>
+</div>
+</div>
+</footer>
+
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/waypoints.min.js"></script>
+<script type="text/javascript" src="js/navbar2.js"></script>
+
+<a href="#" id="toTop" style="display: none;"><span id="toTopHover"></span>To Top</a>
+</body>
+</html>
