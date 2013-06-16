@@ -1,64 +1,62 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>PhpDoc Cheatsheet</title>
-<meta name="description" content="Cheatsheet for phpDocumentor">
-<meta name="keywords" content="phpDocumentor, php documentor, documentation php">
-<meta name="author" content="Jose Ruzafa">
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="all">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all">
-<link rel="stylesheet" type="text/css" href="css/vendor.css" media="all">
-<link rel="icon" type="image/x-icon" href="http://www.phpdoc.org/bundles/phpdocumentorwebsite/images/logo-trans.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>PhpDoc Cheatsheet</title>
+  <meta name="description" content="Cheatsheet for phpDocumentor">
+  <meta name="keywords" content="phpDocumentor, php documentor, documentation php">
+  <meta name="author" content="Jose Ruzafa">
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css" media="all">
+  <link rel="icon" type="image/x-icon" href="http://www.phpdoc.org/bundles/phpdocumentorwebsite/images/logo-trans.png">
 </head>
 <body id="top">
 
-<div id="container" class="container">
-<div class="inner">
-<div id="controller">
+  <div id="container" class="container">
+    <div class="inner">
+      <div id="controller">
 
-<header>
-    <div id="title">PhpDoc2Cheatsheet</div>
-    <h1>Lot of Code Snippets for phpDocumentor</h1>
-</header>
-<div class="nav-container" style="height: auto;">
-    <nav class="" style="top: 0px;">
-        <ul class="nav nav-pills">
-            <li>
+        <header>
+          <div id="title">PhpDoc2Cheatsheet</div>
+          <h1>Lot of Code Snippets for phpDocumentor</h1>
+        </header>
+        <div class="nav-container" style="height: auto;">
+          <nav class="" style="top: 0px;">
+            <ul class="nav nav-pills">
+              <li>
                 <a href="#" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;File&#39;]);">File</a>
-            </li>
-            <li>
+              </li>
+              <li>
                 <a href="#variable" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Variable&#39;]);">Variable</a>
-            </li>
-            <li>
+              </li>
+              <li>
                 <a href="#class" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Class&#39;]);">Class</a>
-            </li>
-            <li>
+              </li>
+              <li>
                 <a href="#function" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Function&#39;]);">Function</a>
-            </li>
-            <li>
+              </li>
+              <li>
                 <a href="#tags" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Tags&#39;]);">Tags</a>
-            </li>
-             <li>
+              </li>
+              <li>
                 <a href="#arrays" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Arrays&#39;]);">Arrays</a>
-            </li>
-             <li>
+              </li>
+              <li>
                 <a href="#mult_types" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Tags&#39;]);">Multiple types</a>
-            </li>
-        </ul>
-    </nav>
-</div>
-<section id="main_content">
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <section id="main_content">
 
-<!--- #############  FILE ##########   -->
-<section>
-<h2 id="controllers">FILE<a href="#top" class="small">back to top</a></h2>
-<hr>
+          <!--- #############  FILE ##########   -->
+          <section>
+            <h2 id="controllers">FILE<a href="#top" class="small">back to top</a></h2>
+            <hr>
 
-<div class="row">
-
-<div class="span6">
+            <div class="row">
+              <div class="span6">
 <pre><code>/** File docBlock description
 *
 * This block demonstrates the rich
@@ -69,404 +67,387 @@
 * @version 1.0
 * @package sample
 */</code></pre>
+                </div>
+              </div>
+            </section>
 
-</div>
+            <!--- #############  VARIABLE ##########   -->
 
+            <section>
+              <h2 id="variable">VARIABLE<a href="#top" class="small">back to top</a></h2>
+              <hr>
+              <div class="row">
+                <div class="span6">
+                  <h4>Elements</h4>
+<pre>
+<code>/**
+* Global variable declaration docBlock
+* @global integer $GLOBALS['_myvar']
+* @name $_myvar
+*/
 
-</div>
-</section>
+$GLOBALS['_myvar'] = 6;
+</code>
+</pre>
+                </div>
+              </div>
+            </section>
 
+            <!--- #############  CLASS ##########   -->
 
-<!--- #############  VARIABLE ##########   -->
+            <section>
+              <h2 id="class">CLASS<a href="#top" class="small">back to top</a></h2>
+              <hr>
+              <div class="row">
+                <div class="span6">
+<pre>
+<code>/**
+* An example class, this is grouped with
+* other classes in the "sample" package and
+* is part of "classes" subpackage
+* @package sample
+* @subpackage classes
+*/
 
+class myclass {
+...
+}
+</code>
+</pre>
 
-<section>
-<h2 id="variable">VARIABLE<a href="#top" class="small">back to top</a></h2>
-<hr>
-<div class="row">
-  <div class="span6">
-    <h4>Elements</h4>
-    <pre>
-      <code>
-      /**
-      * Global variable declaration docBlock
-      * @global integer $GLOBALS['_myvar']
-      * @name $_myvar
-      */
+              </div>
+            </div>
+          </section>
 
-      $GLOBALS['_myvar'] = 6;
-      </code>
-    </pre>
-  </div>
-</div>
-</section>
+          <!--- #############  FUNCTION ##########   -->
 
-<!--- #############  CLASS ##########   -->
+          <section>
+            <h2 id="function">FUNCTION<a href="#top" class="small">back to top</a></h2>
+            <hr>
+            <div class="row">
+              <div class="span6">
+<pre>
+<code>/**
+* A sample function docblock
+* @global string document the use $_myvar
+* @staticvar integer $staticvar is returned
+* @param string $param1 name to declare
+* @param string $param2 value of the name
+* @return integer
+*/
 
-<section>
-<h2 id="class">CLASS<a href="#top" class="small">back to top</a></h2>
-<hr>
-<div class="row">
-  <div class="span6">
-    <pre>
-      <code>
-      /**
-      * An example class, this is grouped with
-      * other classes in the "sample" package and
-      * is part of "classes" subpackage
-      * @package sample
-      * @subpackage classes
-      */
+function aFunc($param1, $param2='optional') {
+  static $staticvar = 7;
+  global $_myvar;
+  return $staticvar;
+}
+</code>
+</pre>
+            </div>
+          </div>
+        </section>
 
-      class myclass {
-      ...
-      }
-      </code>
-    </pre>
+        <!--- #############  TAGS ##########   -->
 
-
-  </div>
-
-  <div class="span6">
-
-  </div>
-</div>
-</section>
-
-<!--- #############  FUNCTION ##########   -->
-
-<section>
-  <h2 id="function">FUNCTION<a href="#top" class="small">back to top</a></h2>
-  <hr>
-  <div class="row">
-    <div class="span6">
-      <pre>
-          <code>/**
-        * A sample function docblock
-        * @global string document the use $_myvar
-        * @staticvar integer $staticvar is returned
-        * @param string $param1 name to declare
-        * @param string $param2 value of the name
-        * @return integer
-        */
-        function aFunc($param1, $param2='optional') {
-            static $staticvar = 7;
-            global $_myvar;
-            return $staticvar;
-        }
-        </code>
-      </pre>
-    </div>
-
-  </div>
-</section>
-
-<!--- #############  TAGS ##########   -->
-
-
-<section>
-<h2 id="tags">TAGS<a href="#top" class="small">back to top</a></h2>
-<hr>
-<div class="row">
-
-<div class="span6">
-
-<h4>@api</h4>
+        <section>
+          <h2 id="tags">TAGS<a href="#top" class="small">back to top</a></h2>
+          <hr>
+          <div class="row">
+            <div class="span6">
+              <h4>@api</h4>
 <pre><code>/**
-  * This method will not change until a major release.
-  *
-  * @api
-  *
-  * @return void
+* This method will not change until a major release.
+*
+* @api
+*
+* @return void
+*/
+
+function showVersion()
+{
+  <...>
+}</code></pre>
+
+              <h4>@author</h4>
+<pre><code>/**
+* @author My Name
+* @author My Name <my.name@example.com>
+*/</code></pre>
+
+                <h4>@category</h4>
+<pre><code>/**
+* Page-Level DocBlock
+*
+* @category MyCategory
+* @package  MyPackage
+*/</code></pre>
+                  <h4>@copyright</h4>
+<pre><code>/**
+* @copyright 1997-2005 The PHP Group
+*/</code></pre>
+
+                    <h4>@deprecated</h4>
+<pre><code>/**
+* @deprecated
+* @deprecated 1.0.0
+* @deprecated No longer used by internal code and not recommended.
+* @deprecated 1.0.0 No longer used by internal code and not recommended.
+*/
+
+function count()
+{
+  <...>
+}</code></pre>
+
+                    <h4>@example</h4>
+<pre><code>/**
+* @example example1.php Counting in action.
+* @example http://example.com/example2.phps Counting in action by a 3rd party.
+* @example "My Own Example.php" My counting.
+*/
+
+function count()
+{
+  <...>
+}</code></pre>
+
+                    <h4>@filesource</h4>
+<pre><code>/**
+* @filesource
+*/</code></pre>
+
+                      <h4>@deprecated</h4>
+<pre><code>/**
+* @deprecated
+* @deprecated 1.0.0
+* @deprecated No longer used by internal code and not recommended.
+* @deprecated 1.0.0 No longer used by internal code and not recommended.
+*/
+
+function count()
+{
+  <...>
+}</code></pre>
+
+                      <h4>@ignore</h4>
+<pre><code>if ($ostest) {
+  /**
+  * This define will either be 'Unix' or 'Windows'
   */
-  function showVersion()
-  {
-     <...>
-  }</code></pre>
-
-<h4>@author</h4>
-<pre><code> /**
-  * @author My Name
-  * @author My Name <my.name@example.com>
-  */</code></pre>
-
- <h4>@category</h4>
-<pre><code> /**
-  * Page-Level DocBlock
-  *
-  * @category MyCategory
-  * @package  MyPackage
-  */</code></pre>
-
-
-
-<h4>@copyright</h4>
-<pre><code>  /**
-  * @copyright 1997-2005 The PHP Group
-  */</code></pre>
-
-<h4>@deprecated</h4>
-<pre><code> /**
-  * @deprecated
-  * @deprecated 1.0.0
-  * @deprecated No longer used by internal code and not recommended.
-  * @deprecated 1.0.0 No longer used by internal code and not recommended.
+  define("OS","Unix");
+} else {
+  /**
+  * @ignore
   */
- function count()
- {
-     <...>
- }</code></pre>
-
- <h4>@example</h4>
-<pre><code> /**
-  * @example example1.php Counting in action.
-  * @example http://example.com/example2.phps Counting in action by a 3rd party.
-  * @example "My Own Example.php" My counting.
-  */
- function count()
- {
-     <...>
- }</code></pre>
-
- <h4>@filesource</h4>
-<pre><code>  /**
-  * @filesource
-  */</code></pre>
-
- <h4>@deprecated</h4>
-<pre><code> /**
-  * @deprecated
-  * @deprecated 1.0.0
-  * @deprecated No longer used by internal code and not recommended.
-  * @deprecated 1.0.0 No longer used by internal code and not recommended.
-  */
- function count()
- {
-     <...>
- }</code></pre>
+  define("OS","Windows");
+}</code></pre>
 
 
+                   <h4>@internal</h4>
+<pre><code>/**
+* @internal
+*
+* @return integer Indicates the number of items.
+*/
 
- <h4>@ignore</h4>
-<pre><code>  if ($ostest) {
-     /**
-      * This define will either be 'Unix' or 'Windows'
-      */
-     define("OS","Unix");
- } else {
-     /**
-      * @ignore
-      */
-     define("OS","Windows");
- }</code></pre>
+function count()
+{
+  <...>
+}</code></pre>
 
+                  <h4>@internal</h4>
+<pre><code>/**
+* @internal
+*
+* @return integer Indicates the number of items.
+*/
 
- <h4>@internal</h4>
-<pre><code>  /**
-  * @internal
-  *
-  * @return integer Indicates the number of items.
-  */
- function count()
- {
-     <...>
- }</code></pre>
+function count()
+{
+  <...>
+}</code></pre>
 
- <h4>@internal</h4>
-<pre><code>  /**
-  * @internal
-  *
-  * @return integer Indicates the number of items.
-  */
- function count()
- {
-     <...>
- }</code></pre>
+                  <h4>@license</h4>
+<pre><code>/**
+* @license GPL
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*/</code></pre>
 
-
- <h4>@license</h4>
-<pre><code> /**
-  * @license GPL
-  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-  */</code></pre>
-
-
- <h4>@method</h4>
-<pre><code>  class Parent
- {
-     public function __call()
-     {
-         <...>
-     }
- }
-
- /**
-  * @method string getString()
-  * @method void setInteger(integer $integer)
-  * @method setString(integer $integer)
-  */
- class Child extends Parent
- {
-     <...>
- }</code></pre>
-
-
- <h4>@package</h4>
-<pre><code> /**
-  * @package PSR\Documentation\API
-  */</code></pre>
-
-
- <h4>@param</h4>
-<pre><code> /**
-  * Counts the number of items in the provided array.
-  *
-  * @param mixed[] $array Array structure to count the elements of.
-  *
-  * @return int Returns the number of elements.
-  */
- function count(array $items)
- {
-     <...>
- }</code></pre>
-
-
- <h4>@property</h4>
-<pre><code>  class Parent
- {
-     public function __get()
-     {
-         <...>
-     }
- }
-
- /**
-  * @property string $myProperty
-  */
- class Child extends Parent
- {
-     <...>
- }</code></pre>
-
-
-
-
-</div>
-
-<div class="span6">
-
-
-<h4>@property-read</h4>
-<pre><code>  class Parent
- {
-     public function __get()
-     {
-         <...>
-     }
- }
-
- /**
-  * @property-read string $myProperty
-  */
- class Child extends Parent
- {
-     <...>
- }</code></pre>
-
- <h4>@property-write</h4>
+                    <h4>@method</h4>
 <pre><code>class Parent
+{
+  public function __call()
+  {
+    <...>
+  }
+}
+
+/**
+* @method string getString()
+* @method void setInteger(integer $integer)
+* @method setString(integer $integer)
+*/
+
+class Child extends Parent
+{
+  <...>
+}</code></pre>
+
+               <h4>@package</h4>
+               <pre><code>/**
+                * @package PSR\Documentation\API
+                */</code></pre>
+
+
+                <h4>@param</h4>
+<pre><code>/**
+* Counts the number of items in the provided array.
+*
+* @param mixed[] $array Array structure to count the elements of.
+*
+* @return int Returns the number of elements.
+*/
+
+function count(array $items)
+{
+  <...>
+}</code></pre>
+
+                <h4>@property</h4>
+<pre><code>  class Parent
+{
+  public function __get()
+  {
+    <...>
+  }
+}
+
+/**
+* @property string $myProperty
+*/
+
+class Child extends Parent
+{
+  <...>
+}</code></pre>
+         </div>
+
+         <div class="span6">
+
+          <h4>@property-read</h4>
+    <pre><code>class Parent {
+     public function __get()
+     {
+      <...>
+     }
+ }
+
+ /**
+ * @property-read string $myProperty
+ */
+
+ class Child extends Parent
  {
+  <...>
+ }</code></pre>
+
+     <h4>@property-write</h4>
+   <pre><code>class Parent
+     {
      public function __set()
      {
-         <...>
-     }
+     <...>
+   }
  }
 
  /**
-  * @property-write string $myProperty
-  */
+ * @property-write string $myProperty
+ */
+
  class Child extends Parent
  {
-     <...>
- }</code></pre>
+ <...>
+}</code></pre>
 
  <h4>@return (Singular type)</h4>
-<pre><code> /**
+ <pre><code>/**
   * @return integer Indicates the number of items.
   */
- function count()
- {
-     <...>
- }</code></pre>
 
+  function count()
+  {
+    <...>
+}</code></pre>
 
-  <h4>@return (two types)</h4>
-<pre><code>  /**
+<h4>@return (two types)</h4>
+<pre><code>/**
   * @return string|null The label's text or null if none provided.
   */
- function getLabel()
- {
-     <...>
- }</code></pre>
 
+  function getLabel()
+  {
+    <...>
+}</code></pre>
 
 <h4>@see</h4>
-<pre><code> /**
+<pre><code>/**
   * @see http://example.com/my/bar Documentation of Foo.
   * @see MyClass::$items           for the property whose items are counted
   * @see MyClass::setItems()       to set the items for this collection.
   *
   * @return integer Indicates the number of items.
   */
- function count()
- {
-     <...>
- }</code></pre>
 
- <h4>@since</h4>
-<pre><code> /**
+  function count()
+  {
+    <...>
+}</code></pre>
+
+<h4>@since</h4>
+<pre><code>/**
   * @since 1.0.1 First time this was introduced.
   *
   * @return integer Indicates the number of items.
   */
- function count()
- {
-     <...>
- }
 
- /**
-  * @since 1.0.2 Added the $b argument.
-  * @since 1.0.1 Added the $a argument.
-  * @since 1.0.0
-  *
-  * @return void
-  */
- function dump($a, $b)
- {
-     <...>
- }</code></pre>
+  function count()
+  {
+    <...>
+}
 
+/**
+* @since 1.0.2 Added the $b argument.
+* @since 1.0.1 Added the $a argument.
+* @since 1.0.0
+*
+* @return void
+*/
 
- <h4>@source</h4>
-<pre><code> /**
+function dump($a, $b)
+{
+ <...>
+}</code></pre>
+
+<h4>@source</h4>
+<pre><code>/**
   * @source 2 1 Check that ensures lazy counting.
   */
- function count()
- {
-     if (null === $this->count) {
-         <...>
-     }
- }</code></pre>
 
- <h4>@subpackage</h4>
-<pre><code> /**
+  function count()
+  {
+  if (null === $this->count) {
+    <...>
+  }
+}</code></pre>
+
+<h4>@subpackage</h4>
+<pre><code>/**
   * @package PSR
   * @subpackage Documentation\API
   */</code></pre>
 
-
- <h4>@throws</h4>
-<pre><code>  /**
+  <h4>@throws</h4>
+<pre><code>/**
   * Counts the number of items in the provided array.
   *
   * @param mixed[] $array Array structure to count the elements of.
@@ -476,11 +457,11 @@
   *
   * @return int Returns the number of elements.
   */
- function count($items)
- {
-     <...>
- }</code></pre>
 
+  function count($items)
+  {
+    <...>
+}</code></pre>
 
   <h4>@todo</h4>
 <pre><code>/**
@@ -490,40 +471,42 @@
   *
   * @return int Returns the number of elements.
   */
- function count()
- {
-     <...>
- }</code></pre>
 
+  function count()
+  {
+    <...>
+}</code></pre>
 
   <h4>@uses & @used-by</h4>
-<pre><code> /**
+<pre><code>/**
   * @uses MyClass::$items to retrieve the count from.
   *
   * @return integer Indicates the number of items.
   */
- function count()
- {
-     <...>
- }</code></pre>
 
+  function count()
+  {
+    <...>
+}</code></pre>
 
-   <h4>@version</h4>
-<pre><code> /**
-  * @version 1.0.1
-  */
- class Counter
- {
-     <...>
- }
+  <h4>@version</h4>
+  <pre><code>/**
+    * @version 1.0.1
+    */
 
- /**
+    class Counter
+    {
+      <...>
+  }
+
+  /**
   * @version GIT: $Id$ In development. Very unstable.
   */
- class NeoCounter
- {
-     <...>
- }</code></pre>
+
+  class NeoCounter
+  {
+    <...>
+}</code></pre>
 
 </div>
 
@@ -556,7 +539,7 @@
 </pre>
     </div>
   </div>
-   <div class="row">
+  <div class="row">
     <div class="span6">
       <h4>specified containing multiple types:</h4>
 <pre>
@@ -584,21 +567,21 @@
 </div>
 
 
-  <footer>
-    <div class="row">
-      <div class="span9">
-        PhpDoc2Cheatsheet by
-        <a href="https://twitter.com/jruzafa">jruzafa</a><br>
-      </div>
+<footer>
+  <div class="row">
+    <div class="span9">
+      PhpDoc2Cheatsheet by
+      <a href="https://twitter.com/jruzafa">jruzafa</a><br>
     </div>
-  </footer>
+  </div>
+</footer>
 
 </div>
 
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/waypoints.min.js"></script>
-  <script type="text/javascript" src="js/navbar2.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/waypoints.min.js"></script>
+<script type="text/javascript" src="js/navbar2.js"></script>
 
-  <a href="#" id="toTop" style="display: none;"><span id="toTopHover"></span>To Top</a>
+<a href="#" id="toTop" style="display: none;"><span id="toTopHover"></span>To Top</a>
 </body>
 </html>
