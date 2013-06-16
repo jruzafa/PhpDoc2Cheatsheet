@@ -20,7 +20,7 @@
 
 <header>
     <div id="title">PhpDoc2Cheatsheet</div>
-    <h1>Lot of Code Snippets for PhpDoc2Cheatsheet</h1>
+    <h1>Lot of Code Snippets for phpDocumentor</h1>
   <!--   <span class="version">v 2.0.0</span> -->
 </header>
 <div class="nav-container" style="height: auto;">
@@ -30,16 +30,16 @@
                 <a href="#" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;File&#39;]);">File</a>
             </li>
             <li>
-                <a href="#views" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Variable&#39;]);">Variable</a>
+                <a href="#variable" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Variable&#39;]);">Variable</a>
             </li>
             <li>
-                <a href="#models" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Class&#39;]);">Class</a>
+                <a href="#class" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Class&#39;]);">Class</a>
             </li>
             <li>
-                <a href="#email" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Function&#39;]);">Function</a>
+                <a href="#function" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Function&#39;]);">Function</a>
             </li>
             <li>
-                <a href="#caching" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Tags&#39;]);">Tags</a>
+                <a href="#tags" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Tags&#39;]);">Tags</a>
             </li>
              <li>
                 <a href="#arrays" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Menu&#39;, &#39;Arrays&#39;]);">Arrays</a>
@@ -82,7 +82,7 @@
 
 
 <section>
-<h2 id="views">VARIABLE<a href="#top" class="small">back to top</a></h2>
+<h2 id="variable">VARIABLE<a href="#top" class="small">back to top</a></h2>
 <hr>
 <div class="row">
   <div class="span6">
@@ -105,7 +105,7 @@
 <!--- #############  CLASS ##########   -->
 
 <section>
-<h2 id="models">CLASS<a href="#top" class="small">back to top</a></h2>
+<h2 id="class">CLASS<a href="#top" class="small">back to top</a></h2>
 <hr>
 <div class="row">
   <div class="span6">
@@ -137,7 +137,7 @@
 <!--- #############  FUNCTION ##########   -->
 
 <section>
-  <h2 id="email">FUNCTION<a href="#top" class="small">back to top</a></h2>
+  <h2 id="function">FUNCTION<a href="#top" class="small">back to top</a></h2>
   <hr>
   <div class="row">
     <div class="span6">
@@ -166,7 +166,7 @@
 
 
 <section>
-<h2 id="caching">TAGS<a href="#top" class="small">back to top</a></h2>
+<h2 id="tags">TAGS<a href="#top" class="small">back to top</a></h2>
 <hr>
 <div class="row">
 
@@ -535,25 +535,71 @@
 
 <!-- End Main -->
 </section>
+
+<!--- ############# ARRAYS ##########   -->
+
+<section>
+  <h2 id="arrays">ARRAYS<a href="#top" class="small">back to top</a></h2>
+  <hr>
+  <div class="row">
+    <div class="span6">
+      <h4>unspecified:</h4>
+<pre>
+<code>@return array</code>
+</pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <h4>specified containing a single type:</h4>
+<pre>
+<code>@return int[]</code>
+</pre>
+    </div>
+  </div>
+   <div class="row">
+    <div class="span6">
+      <h4>specified containing multiple types:</h4>
+<pre>
+<code>@return (int|string)[]</code>
+</pre>
+    </div>
+  </div>
+</section>
+
+<!--- #############  MULTIPLE TYPES ##########   -->
+
+<section>
+  <h2 id="mult_types">MULTIPLE TYPES<a href="#top" class="small">back to top</a></h2>
+  <hr>
+  <div class="row">
+    <div class="span6">
+<pre>
+<code>@return int|null </code>
+</pre>
+    </div>
+  </div>
+</section>
+
 </div>
 </div>
 
 
-<footer>
-<div class="row">
-<div class="span9">
-PhpDoc2Cheatsheet by
-<a href="https://twitter.com/jruzafa">jruzafa</a><br>
-</div>
-</div>
-</footer>
+  <footer>
+    <div class="row">
+      <div class="span9">
+        PhpDoc2Cheatsheet by
+        <a href="https://twitter.com/jruzafa">jruzafa</a><br>
+      </div>
+    </div>
+  </footer>
 
 </div>
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/waypoints.min.js"></script>
-<script type="text/javascript" src="js/navbar2.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/waypoints.min.js"></script>
+  <script type="text/javascript" src="js/navbar2.js"></script>
 
-<a href="#" id="toTop" style="display: none;"><span id="toTopHover"></span>To Top</a>
+  <a href="#" id="toTop" style="display: none;"><span id="toTopHover"></span>To Top</a>
 </body>
 </html>
