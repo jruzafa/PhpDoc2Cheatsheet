@@ -1,0 +1,7 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(phpdoc2cheatsheet\.com)(:80)? [NC]
+RewriteRule ^(.*) http://www.phpdoc2cheatsheet.com/$1 [R=301,L]
+order deny,allow
