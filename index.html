@@ -5,15 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PhpDoc Cheatsheet</title>
 <meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="Wessel Strengholt">
+<meta name="keywords" content="phpDocumentor, documentor, documentation, php">
+<meta name="author" content="Jose Ruzafa">
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/vendor.css" media="all">
 <link rel="icon" type="image/x-icon" href="http://www.phpdoc.org/bundles/phpdocumentorwebsite/images/logo-trans.png">
 </head>
 <body id="top">
-
 
 <div id="container" class="container">
 <div class="inner">
@@ -57,8 +56,7 @@
 <section>
 <h2 id="controllers">FILE<a href="#top" class="small">back to top</a></h2>
 <hr>
-<!-- <p>Here are some useful shortcuts and functions regarding the request object in Symfony 2 controllers.</p> -->
-<h4>Sample file docBlock</h4>
+
 <div class="row">
 
 <div class="span6">
@@ -76,48 +74,6 @@
 </div>
 
 
-<div class="span6">
-    <h5>Redirecting:</h5>
-    <pre><code>$this->redirect(array('controller' => 'orders', 'action' => 'thanks'));</code></pre>
-
-    <h5>Redirecting to website:</h5>
-    <pre><code>$this->redirect('http://www.example.com');</code></pre>
-
-    <h5>Render the element for ajax:</h5>
-    <pre><code>$this->render('/Elements/ajaxreturn');</code></pre>
-
-    <h5>Redirect to 404 not found:</h5>
-    <pre><code>throw new NotFoundException('404 Error - Page not found');</code></pre>
-
-    <h5>Before filter</h5>
-    <pre><code>public function beforeFilter()
-{
-    parent::beforeFilter();
-    $this->Auth->allow('view');
-}</code>
-</div>
-
-<div class="span6">
-<h4>Retrieving data from view</h4>
-<p>From Element view:</p>
-<pre><code>$comments = $this->requestAction('/comments/latest');
-foreach ($comments as $comment) {
-    echo $comment['Comment']['title'];
-}</code></pre>
-
-<p>In Controller:</p>
-<pre><code>$this->requestAction(
-    array('controller' => 'articles', 'action' => 'featured'),
-    array('return')
-);</code></pre>
-
-<h4>Load Model</h4>
-<pre><code>$this->loadModel('Article');
-$Articles = $this->Article->find('all');
-
-$this->loadModel('User', 2);
-$user = $this->User->read();</code></pre>
-</div>
 </div>
 </section>
 
@@ -129,124 +85,81 @@ $user = $this->User->read();</code></pre>
 <h2 id="views">VARIABLE<a href="#top" class="small">back to top</a></h2>
 <hr>
 <div class="row">
+  <div class="span6">
+    <h4>Elements</h4>
+    <pre>
+      <code>
+      /**
+      * Global variable declaration docBlock
+      * @global integer $GLOBALS['_myvar']
+      * @name $_myvar
+      */
 
-<div class="span6">
-
-<h4>Elements</h4>
-<pre>
-<code>
-/**
-* Global variable declaration docBlock
-* @global integer $GLOBALS['_myvar']
-* @name $_myvar
-*/
-
-$GLOBALS['_myvar'] = 6;
-</code>
-</pre>
-
-
-</div>
-
-
-<div class="span6">
-    <h5>Layouts</h5>
-    <pre><code>$this->layout = 'admin';</code></pre>
-
-
-</div>
-
+      $GLOBALS['_myvar'] = 6;
+      </code>
+    </pre>
+  </div>
 </div>
 </section>
 
 <!--- #############  CLASS ##########   -->
 
-
 <section>
 <h2 id="models">CLASS<a href="#top" class="small">back to top</a></h2>
 <hr>
 <div class="row">
+  <div class="span6">
+    <pre>
+      <code>
+      /**
+      * An example class, this is grouped with
+      * other classes in the "sample" package and
+      * is part of "classes" subpackage
+      * @package sample
+      * @subpackage classes
+      */
 
-<div class="span6">
-
-
-<h5>Simple model example:</h5>
-<pre><code>
-/**
-* An example class, this is grouped with
-* other classes in the "sample" package and
-* is part of "classes" subpackage
-* @package sample
-* @subpackage classes
-*/
-
-class myclass {
-...
-}
-</code></pre>
+      class myclass {
+      ...
+      }
+      </code>
+    </pre>
 
 
-<h3>Field</h3>
-<p>echo the name for row id 22</p>
-<pre><code>$this->Post->id = 22;
-echo $this->Post->field('name');</code></pre>
+  </div>
 
+  <div class="span6">
 
-</div>
-
-
-<div class="span6">
-<h3>Model Attributes</h3>
-<h5>Database config</h5>
-<pre><code>public $useDbConfig = 'alternate';</code></pre>
-
-
-
-</div>
-
+  </div>
 </div>
 </section>
 
-
-
-
 <!--- #############  FUNCTION ##########   -->
 
-
 <section>
-<h2 id="email">FUNCTION<a href="#top" class="small">back to top</a></h2>
-<hr>
-<div class="row">
+  <h2 id="email">FUNCTION<a href="#top" class="small">back to top</a></h2>
+  <hr>
+  <div class="row">
+    <div class="span6">
+      <pre>
+          <code>/**
+        * A sample function docblock
+        * @global string document the use $_myvar
+        * @staticvar integer $staticvar is returned
+        * @param string $param1 name to declare
+        * @param string $param2 value of the name
+        * @return integer
+        */
+        function aFunc($param1, $param2='optional') {
+            static $staticvar = 7;
+            global $_myvar;
+            return $staticvar;
+        }
+        </code>
+      </pre>
+    </div>
 
-<div class="span6">
-
-<p>Load Class</p>
-<pre><code>/**
-* A sample function docblock
-* @global string document the use $_myvar
-* @staticvar integer $staticvar is returned
-* @param string $param1 name to declare
-* @param string $param2 value of the name
-* @return integer
-*/
-function aFunc($param1, $param2='optional') {
-    static $staticvar = 7;
-    global $_myvar;
-    return $staticvar;
-}
-</code></pre>
-
-</div>
-
-<div class="span6">
-<h5>Choosing the sender</h5>
-<pre><code>$Email = new CakeEmail();
-$Email->sender('app@example.com', 'MyApp emailer');</code></pre>
-
-
-</div>
-
-</div>
+  </div>
 </section>
 
 <!--- #############  TAGS ##########   -->
