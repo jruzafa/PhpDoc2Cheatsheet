@@ -12,7 +12,7 @@
   <link rel="icon" type="image/x-icon" href="http://www.phpdoc.org/bundles/phpdocumentorwebsite/images/logo-trans.png">
 </head>
 <body id="top">
-
+<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
   <div id="container" class="container">
     <div class="inner">
       <div id="controller">
@@ -229,6 +229,12 @@ function count()
   <...>
 }</code></pre>
 
+                      <h4>@global</h4>
+                      <h5>This tag is not included in phpDocumentor 2.0</h5>
+<pre><code>/**
+  *@global [Type] [name] @global [Type] [description]*/
+</code></pre>
+
                       <h4>@ignore</h4>
 <pre><code>if ($ostest) {
   /**
@@ -266,6 +272,34 @@ function count()
 {
   <...>
 }</code></pre>
+
+                 <h4>@link</h4>
+                 <h5>Normal tag:</h5>
+<pre><code>/**
+  * @link http://example.com/my/bar Documentation of Foo.
+  *
+  * @return integer Indicates the number of items.
+  */
+
+ function count()
+ {
+     <...>
+ }
+</code></pre>
+<h5>Inline tag:</h5>
+<pre><code>/**
+  * This method counts the occurrences of Foo.
+  *
+  * When no more Foo ({@link http://example.com/my/bar}) are given this
+  * function will add one as there must always be one Foo.
+  *
+  * @return integer Indicates the number of items.
+  */
+
+ function count()
+ {
+     <...>
+ }</code></pre>
 
                   <h4>@license</h4>
 <pre><code>/**
