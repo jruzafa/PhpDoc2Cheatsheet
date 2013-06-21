@@ -1,3 +1,5 @@
+<a name="top"></a>
+
 PhpDoc2Cheatsheet
 =================
 
@@ -11,7 +13,9 @@ http://phpdoc2cheatsheet.com/
 [Arrays](#arrays)
 [Multiple Types](#multiple_types)
 
-<a name="file"></a>File
+<a name="file"></a>
+File
+[&uarr;](#top)
 
 ```php
 /** File docBlock description
@@ -26,7 +30,9 @@ http://phpdoc2cheatsheet.com/
  */
 ```
 
-<a name="variable"></a>Variable
+<a name="variable"></a>
+Variable
+[&uarr;](#top)
 
 ```php
 /**
@@ -37,7 +43,9 @@ http://phpdoc2cheatsheet.com/
 $GLOBALS['_myvar'] = 6;
 ```
 
-<a name="class"></a>Class
+<a name="class"></a>
+Class
+[&uarr;](#top)
 
 ```php
 /**
@@ -53,7 +61,9 @@ class myclass
 }
 ```
 
-<a name="function"></a>Function
+<a name="function"></a>
+Function
+[&uarr;](#top)
 
 ```php
 /**
@@ -72,7 +82,9 @@ function aFunc($param1, $param2 = 'optional')
 }
 ```
 
-<a name="tags"></a>Tags
+<a name="tags"></a>
+Tags
+[&uarr;](#top)
 
 @api
 
@@ -520,7 +532,9 @@ class NeoCounter
 }
 ```
 
-<a name="arrays"></a>Arrays
+<a name="arrays"></a>
+Arrays
+[&uarr;](#top)
 
 unspecified:
 
@@ -546,7 +560,9 @@ specified containing multiple types:
  */
 ```
 
-<a name="multiple_types"></a>Multiple Types
+<a name="multiple_types"></a>
+Multiple Types
+[&uarr;](#top)
 
 ```php
 /*
