@@ -11,6 +11,3 @@ RewriteRule ^([bfg]=.*)  index.php?$1 [L,NE]
 # In case AddOutputFilterByType has been added
 SetEnv no-gzip
 </IfModule>
-
-
-SetEnvIfNoCase Request_URI .* no-gzip dont-vary
