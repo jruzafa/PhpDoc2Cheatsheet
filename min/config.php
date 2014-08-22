@@ -173,6 +173,8 @@ $min_symlinks = array();
 $min_uploaderHoursBehind = 0;
 
 
+$min_serveOptions['contentTypeCharset']  = 'utf-8';
+
 /**
  * Path to Minify's lib folder. If you happen to move it, change 
  * this accordingly.
