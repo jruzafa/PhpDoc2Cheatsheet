@@ -160,21 +160,6 @@ function count()
  */
 ```
 
-@deprecated
-
-```php
-/**
- * @deprecated
- * @deprecated 1.0.0
- * @deprecated No longer used by internal code and not recommended.
- * @deprecated 1.0.0 No longer used by internal code and not recommended.
- */
-function count()
-{
-	...
-}
-```
-
 @global
 
 This tag is not included in phpDocumentor 2.0
