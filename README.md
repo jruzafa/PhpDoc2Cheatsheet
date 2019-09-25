@@ -1,7 +1,7 @@
 PhpDoc2Cheatsheet
 =================
 
-http://phpdoc2cheatsheet.com/
+https://phpdoc2cheatsheet.joseruzafa.com
 
 [File](#file)
 [Variable](#variable)
